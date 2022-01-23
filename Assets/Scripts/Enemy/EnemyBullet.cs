@@ -27,6 +27,12 @@ public class EnemyBullet : MonoBehaviour
     {
         //Self Destruct everytime it's enabled (ie. SetActive(true))
         StartCoroutine(SelfDestruction());
+
+        //make trail
+        GameObject trail = BulletTrail_Pool._this.Get(transform.position, Quaternion.identity, BulletTrail_Pool._this.transform);
+        trail.GetComponent<BulletTrail>().bullet = this.gameObject;
+
+
     }
 
     private IEnumerator SelfDestruction() 
