@@ -14,6 +14,7 @@ public class PlayerInteract : MonoBehaviour
         {
             health.value += 1;
             Destroy(collision.gameObject);
+            health.GetComponent<Health>().iseat = true;
         }
     }
 }
