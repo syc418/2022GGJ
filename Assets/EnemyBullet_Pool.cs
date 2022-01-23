@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EnemyBullet_Pool : ObjectPool
 {
-    public string description;
-
     public static EnemyBullet_Pool _this;
 
     private void Start()

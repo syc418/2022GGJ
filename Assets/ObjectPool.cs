@@ -9,14 +9,17 @@ public class ObjectPool : MonoBehaviour
     [SerializeField]
     private int prewarm_amount;
 
-    private List<GameObject> object_pool;
+    private Queue<GameObject> object_pool;
 
     private void Awake()
     {
-        object_pool = new List<GameObject>();
+        object_pool = new Queue<GameObject>();
         for (int i = 0; i < prewarm_amount; i++) 
         {
-            object_pool.Add(GameObject.Instantiate(object_prefab, this.transform));
+            GameObject obj = GameObject.Instantiate(object_prefab, this.transform);
+            object_pool.Enqueue(obj);
+            obj.SetActive(false);
+
         }
     }
 
@@ -25,8 +28,7 @@ public class ObjectPool : MonoBehaviour
         GameObject return_object;
         if (object_pool.Count > 0)
         {
-            return_object = object_pool[0];
-            object_pool.RemoveAt(0);
+            return_object = object_pool.Dequeue();
 
             //update pos, rotation, parent
             return_object.SetActive(true);
@@ -37,9 +39,12 @@ public class ObjectPool : MonoBehaviour
         }
         else 
         {
-            //create one of one avaliable
-            return_object = GameObject.Instantiate(object_prefab, position, rotation, parent);
-            object_pool.Add(return_object);
+            //create one of none avaliable
+            return_object = GameObject.Instantiate(object_prefab);
+            return_object.SetActive(true);
+            return_object.transform.position = position;
+            return_object.transform.rotation = rotation;
+            return_object.transform.SetParent(parent);
         }
 
         //do the extra work if needed
@@ -53,7 +58,7 @@ public class ObjectPool : MonoBehaviour
         gameObject.SetActive(false);
         gameObject.transform.SetParent(this.transform);
 
-        object_pool.Add(gameObject);
+        object_pool.Enqueue(gameObject);
     }
 
     public virtual void ExtraWork(GameObject obj) 

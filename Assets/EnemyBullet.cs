@@ -13,6 +13,7 @@ public class EnemyBullet : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             //deal damage to player
+            Debug.Log("Hit player "+ bullet_damage+ " dmg.");
 
             EnemyBullet_Pool._this.Return(this.gameObject);
         }
