@@ -145,9 +145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: badea0cae6ce70e40acb407642ec6f0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion_pool: {fileID: 0}
-  SelfDestruction_Delay: 5
   damage_radius: 0.5
+  fireCracker_lifeTime: 10
 --- !u!95 &2556497250836195504
 Animator:
   serializedVersion: 3

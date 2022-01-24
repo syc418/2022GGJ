@@ -9,7 +9,7 @@ public class EnemyAttack : MonoBehaviour
     public float bullet_damage;
 
     public float fire_rate;
-    private float fire_rate_countdown;
+    private float fire_rate_timer;
 
     public float fire_gap;      //time between bullet for the same shoot
     public float fire_burst;    //number of bullet each shoot
@@ -90,17 +90,17 @@ public class EnemyAttack : MonoBehaviour
 
     private void Update()
     {
-        if (fire_rate_countdown <= 0)
+        if (fire_rate_timer <= 0)
         {
             ShootInCircleUniformDelay();
-            fire_rate_countdown = fire_rate;
+            fire_rate_timer = fire_rate;
 
             //disable the script if one_shot
             if (one_shot) this.enabled = false;
         }
         else 
         {
-            fire_rate_countdown -= Time.deltaTime;
+            fire_rate_timer -= Time.deltaTime;
         }
 
         //TO DO : destory object when it is out of sight
