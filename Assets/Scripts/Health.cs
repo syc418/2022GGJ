@@ -7,13 +7,15 @@ public class Health : MonoBehaviour
 {
     private float current_health;
     private float last_health;
-    private float decreasing_ratio = 1.5f;
     private bool isDecreasing = false;
 
     public Slider health;
+    public bool iseat = false;
     public float startcheck = 3f;
     public float checkrate = 2f;
-    public bool iseat = false;
+    public float decreasing_ratio = 1.5f;
+
+    
 
     // Start is called before the first frame update
     void Start()

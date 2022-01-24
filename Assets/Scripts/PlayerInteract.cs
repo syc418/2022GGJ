@@ -12,7 +12,7 @@ public class PlayerInteract : MonoBehaviour
         Debug.Log("Triggered" + collision.gameObject.tag);
         if (collision.gameObject.tag == "food")
         {
-            health.value += 1;
+            health.value += collision.gameObject.GetComponent<food>().recovery;
             Destroy(collision.gameObject);
             health.GetComponent<Health>().iseat = true;
         }
