@@ -11,6 +11,8 @@ public class ObjectSpawner : MonoBehaviour
 
     private Collider2D collider;
 
+    public GameObject parent;
+
     private void Start()
     {
         collider = GetComponent<Collider2D>();
@@ -25,6 +27,7 @@ public class ObjectSpawner : MonoBehaviour
             position.x += Random.Range(-1f * collider.bounds.extents.x, collider.bounds.extents.x);
             position.y += Random.Range(-1f * collider.bounds.extents.y, collider.bounds.extents.y);
             GameObject obj = GameObject.Instantiate(obj_prefab, position, Quaternion.identity, this.transform);
+            obj.transform.SetParent(parent.transform);
             //reset timer
             spawn_speed_timer = spawn_speed;
 
