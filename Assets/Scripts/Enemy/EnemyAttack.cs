@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyAttack : MonoBehaviour
 {
-    //public ObjectPool bullet_pools;
-
     public float bullet_damage;
 
     public float fire_rate;
@@ -15,6 +14,8 @@ public class EnemyAttack : MonoBehaviour
     public float fire_burst;    //number of bullet each shoot
 
     public bool one_shot = false;
+
+    public UnityEvent shoot_way;
 
     //shoot with random rotation
     public void Shoot(Vector3 bullet_direction, float bullet_speed, float bullet_angularSpeed) 
@@ -92,7 +93,7 @@ public class EnemyAttack : MonoBehaviour
     {
         if (fire_rate_timer <= 0)
         {
-            ShootInCircleUniformDelay();
+            shoot_way.Invoke();
             fire_rate_timer = fire_rate;
 
             //disable the script if one_shot
