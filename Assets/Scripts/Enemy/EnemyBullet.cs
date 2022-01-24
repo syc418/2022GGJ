@@ -15,6 +15,14 @@ public class EnemyBullet : MonoBehaviour
             //deal damage to player
             Debug.Log("Hit player "+ bullet_damage+ " dmg.");
 
+            //show explosion particle small
+            GameObject particle = ExplosionParticleSmall_Pool._this.Get(transform.position, transform.rotation, transform);
+            particle.transform.SetParent(null);
+            Debug.Log("Explosion Small.");
+            //setup delay destruction for particle
+            ExplosionParticleSmall_Pool._this.StartCoroutine(ExplosionParticleSmall_Pool._this.Delay_Return(ExplosionParticleSmall_Pool._this.particle_lifeTime, particle));
+
+            //kill bullet
             EnemyBullet_Pool._this.Return(this.gameObject);
         }
         else if (collision.CompareTag("BlockBullet")) 
@@ -25,6 +33,7 @@ public class EnemyBullet : MonoBehaviour
 
     private void OnEnable()
     {
+
         //Self Destruct everytime it's enabled (ie. SetActive(true))
         StartCoroutine(SelfDestruction());
 
@@ -32,14 +41,13 @@ public class EnemyBullet : MonoBehaviour
         GameObject trail = BulletTrail_Pool._this.Get(transform.position, Quaternion.identity, BulletTrail_Pool._this.transform);
         trail.GetComponent<BulletTrail>().bullet = this.gameObject;
 
-
     }
 
     private IEnumerator SelfDestruction() 
     {
         yield return new WaitForSeconds(bullet_lifeTime);
         EnemyBullet_Pool._this.Return(this.gameObject);
-    }
 
+    }
 
 }

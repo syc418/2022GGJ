@@ -61,6 +61,13 @@ public class ObjectPool : MonoBehaviour
         object_pool.Enqueue(gameObject);
     }
 
+    public IEnumerator Delay_Return(float waitTime, GameObject gameObject) 
+    {
+        yield return new WaitForSeconds(waitTime);
+        Return(gameObject);
+
+    }
+
     public virtual void ExtraWork(GameObject obj) 
     {
         //do nothing by default

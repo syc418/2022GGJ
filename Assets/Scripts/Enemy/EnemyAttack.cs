@@ -67,6 +67,18 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
+    //bullets Uniform with delay (spiral)
+    public void ShootInCircleUniformDelay()
+    {
+        float random_startAngle = Random.Range(0, 360);
+        float angle = (360 / fire_burst);
+
+        for (int i = 0; i < fire_burst; i++)
+        {
+            StartCoroutine(DelayShoot(i * fire_gap, new Vector3(Mathf.Cos(Mathf.Deg2Rad * (angle * i + random_startAngle)), Mathf.Sin(Mathf.Deg2Rad * (angle * i + random_startAngle)), 0), 5f, 30f));
+        }
+    }
+
     //shoot [fire_burst] bullet at once, with [fire_gap] time between each bullet
     public void ShootBurst() 
     {
@@ -80,7 +92,7 @@ public class EnemyAttack : MonoBehaviour
     {
         if (fire_rate_countdown <= 0)
         {
-            ShootBurst();
+            ShootInCircleUniformDelay();
             fire_rate_countdown = fire_rate;
 
             //disable the script if one_shot
@@ -93,6 +105,5 @@ public class EnemyAttack : MonoBehaviour
 
         //TO DO : destory object when it is out of sight
     }
-
 
 }

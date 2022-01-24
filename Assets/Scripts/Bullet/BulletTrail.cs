@@ -36,4 +36,5 @@ public class BulletTrail : MonoBehaviour
         yield return new WaitForSeconds(trail_lifeTime);
         BulletTrail_Pool._this.Return(this.gameObject);
     }
+
 }
