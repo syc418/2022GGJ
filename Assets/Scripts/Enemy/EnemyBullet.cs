@@ -13,7 +13,8 @@ public class EnemyBullet : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             //deal damage to player
-            Debug.Log("Hit player "+ bullet_damage+ " dmg.");
+            //Debug.Log("Hit player "+ bullet_damage+ " dmg.");
+            collision.gameObject.GetComponent<PlayerInteract>().Damage(bullet_damage);
 
             //show explosion particle small
             GameObject particle = ExplosionParticleSmall_Pool._this.Get(transform.position, transform.rotation, transform);

@@ -17,4 +17,9 @@ public class PlayerInteract : MonoBehaviour
             health.GetComponent<Health>().iseat = true;
         }
     }
+
+    public void Damage(float damage)
+    {
+        health.value -= damage;
+    }
 }
