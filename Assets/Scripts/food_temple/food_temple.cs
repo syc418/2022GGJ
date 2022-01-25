@@ -32,6 +32,11 @@ public class food_temple : MonoBehaviour
             gameObject.transform.GetChild(0).gameObject.SetActive(true);
             foodtemple.enabled = false;
         }
+
+        if(transform.position.y < -8)
+        {
+            Destroy(gameObject);
+        }
         
     }
 }

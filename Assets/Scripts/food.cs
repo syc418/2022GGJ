@@ -6,11 +6,11 @@ public class food : MonoBehaviour
 {
     public float recovery;
 
-    private void Update()
+    /*private void Update()
     {
         if (transform.position.y < -8)
         {
             Destroy(gameObject);
         }
-    }
+    }*/
 }
