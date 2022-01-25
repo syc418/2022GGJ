@@ -7,9 +7,19 @@ public class PlayerInteract : MonoBehaviour
 {
     public Slider health;
 
+    //InVulnerable Time
+    [SerializeField]
+    private bool is_Vulnreable;
+    [SerializeField]
+    private float InVulnerableTime;
+
+    //Animator
+    [SerializeField]
+    private Animator animator;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Triggered" + collision.gameObject.tag);
+        //Debug.Log("Triggered" + collision.gameObject.tag);
         if (collision.gameObject.tag == "food")
         {
             health.value += collision.gameObject.GetComponent<food>().recovery;
@@ -20,6 +30,25 @@ public class PlayerInteract : MonoBehaviour
 
     public void Damage(float damage)
     {
-        health.value -= damage;
+        if (is_Vulnreable) 
+        {
+            health.value -= damage;
+            animator.SetTrigger("IsDamaged");
+            SetInVulnerable(InVulnerableTime);
+        }
+        
+    }
+
+    public void SetInVulnerable(float time) 
+    {
+        is_Vulnreable = false;
+        StartCoroutine(VulunerableRecover(time));
+    }
+
+
+    private IEnumerator VulunerableRecover(float time)
+    {
+        yield return new WaitForSeconds(time);
+        is_Vulnreable = true;
     }
 }

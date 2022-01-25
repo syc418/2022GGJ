@@ -6,6 +6,8 @@ public class FireCracker : MonoBehaviour
 {
     public float damage_radius;
 
+    public float fireCracker_damage;
+
     public float fireCracker_lifeTime;
 
     public void Play_Explosion() 
@@ -25,8 +27,7 @@ public class FireCracker : MonoBehaviour
         {
             if (collider.CompareTag("Player")) 
             {
-                //TO DO: apply damage to player in range
-                Debug.Log("Player is hit by FireCracker.");
+                collider.GetComponent<PlayerInteract>().Damage(fireCracker_damage);
                 return;
             }
         }

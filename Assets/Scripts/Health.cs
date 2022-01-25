@@ -33,13 +33,13 @@ public class Health : MonoBehaviour
         current_health = health.value;
         if (isDecreasing)
         {
-            Debug.Log("Decrease now");
+            //Debug.Log("Decrease now");
             health.value -= decreasing_ratio * Time.deltaTime;
         }
 
         if(iseat)
         {
-            Debug.Log("eat now, stop decrease");
+            //Debug.Log("eat now, stop decrease");
             isDecreasing = false;
         }
         
@@ -47,10 +47,10 @@ public class Health : MonoBehaviour
 
     private void decrease_health()
     {
-        Debug.Log("Check if player eat");
+        //Debug.Log("Check if player eat");
         if (current_health == last_health)
         {
-            Debug.Log("didn't eat, start to decrease.");
+            //Debug.Log("didn't eat, start to decrease.");
             isDecreasing = true;
             iseat = false;
         }
