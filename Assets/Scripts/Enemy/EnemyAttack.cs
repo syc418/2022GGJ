@@ -84,7 +84,7 @@ public class EnemyAttack : MonoBehaviour
 
         for (int i = 0; i < fire_burst; i++)
         {
-            StartCoroutine(DelayShoot(i * fire_gap, new Vector3(Mathf.Cos(Mathf.Deg2Rad * (angle * i + random_startAngle)), Mathf.Sin(Mathf.Deg2Rad * (angle * i + random_startAngle)), 0), bullet_speed, 30f));
+            StartCoroutine(DelayShoot(i * fire_gap, new Vector3(Mathf.Cos(Mathf.Deg2Rad * (angle * i + random_startAngle)), Mathf.Sin(Mathf.Deg2Rad * (angle * i + random_startAngle)), 0), bullet_speed, Random.Range(180f, 720f)));
         }
     }
 
