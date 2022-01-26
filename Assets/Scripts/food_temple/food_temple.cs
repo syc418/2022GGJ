@@ -6,7 +6,7 @@ public class food_temple : MonoBehaviour
 {
     public float disapear_time = 5f;
     private SpriteRenderer foodtemple;
-    public GameObject foodgenerator;
+    //public GameObject foodgenerator;
     // Start is called before the first frame update
     void Start()
     {
