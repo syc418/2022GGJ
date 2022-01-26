@@ -6,8 +6,7 @@ public class food_temple : MonoBehaviour
 {
     public float disapear_time = 5f;
     private SpriteRenderer foodtemple;
-    private float current_time = 0f;
-    private float alpha = 255f;
+    public GameObject foodgenerator;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,25 +17,29 @@ public class food_temple : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        Debug.Log(current_time);
-        if (current_time < disapear_time)
-        {
-            alpha = 255 * ((disapear_time - current_time) / disapear_time);
-            //Debug.Log("Alpha value is " + alpha);
-            foodtemple.color = new Color (255f, 255f, 255f, alpha);
-            current_time += Time.deltaTime;
-        }
-        else
-        {
-            gameObject.transform.GetChild(0).gameObject.SetActive(true);
-            foodtemple.enabled = false;
-        }
-
         if(transform.position.y < -8)
         {
             Destroy(gameObject);
         }
         
+    }
+    private void OnEnable()
+    {
+        StartCoroutine(Disappear());
+    }
+
+    private IEnumerator Disappear()
+    {
+        yield return new WaitForSeconds(disapear_time);
+        this.GetComponent<Animator>().enabled = true;
+        gameObject.transform.GetChild(0).gameObject.SetActive(true);
+        //GameObject obj = GameObject.Instantiate(foodgenerator, this.transform.position, Quaternion.identity, this.transform);
+        //this.GetComponent<FoodShowUp>().ShowUpFood(this.transform.position);
+    }
+
+    public void StopDisappearAnimator()
+    {
+        this.GetComponent<Animator>().enabled = false;
+        foodtemple.enabled = false;
     }
 }
