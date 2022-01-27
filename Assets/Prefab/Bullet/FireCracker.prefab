@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage_radius: 0.5
+  fireCracker_damage: 35
   fireCracker_lifeTime: 10
 --- !u!95 &2556497250836195504
 Animator:

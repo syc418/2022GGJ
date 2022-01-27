@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet_damage: 10
+  bullet_speed: 5
   fire_rate: 1
   fire_gap: 0
   fire_burst: 10

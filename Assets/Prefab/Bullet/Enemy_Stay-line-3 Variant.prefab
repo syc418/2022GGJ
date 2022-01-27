@@ -17,7 +17,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2822426764457758940, guid: 4008c555e84e3ac4b9eb46e627a72b95, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.69
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2822426764457758940, guid: 4008c555e84e3ac4b9eb46e627a72b95, type: 3}
       propertyPath: m_LocalPosition.z
@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2822426764457758941, guid: 4008c555e84e3ac4b9eb46e627a72b95, type: 3}
       propertyPath: m_Name
-      value: Enemy_Stay-line-3
+      value: Enemy_Stay-line-3 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2822426764457758943, guid: 4008c555e84e3ac4b9eb46e627a72b95, type: 3}
       propertyPath: fire_gap

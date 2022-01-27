@@ -19,7 +19,6 @@ public class EnemyBullet : MonoBehaviour
             //show explosion particle small
             GameObject particle = ExplosionParticleSmall_Pool._this.Get(transform.position, transform.rotation, transform);
             particle.transform.SetParent(null);
-            Debug.Log("Explosion Small.");
             //setup delay destruction for particle
             ExplosionParticleSmall_Pool._this.StartCoroutine(ExplosionParticleSmall_Pool._this.Delay_Return(ExplosionParticleSmall_Pool._this.particle_lifeTime, particle));
 

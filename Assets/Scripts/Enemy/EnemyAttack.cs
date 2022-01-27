@@ -5,7 +5,8 @@ using UnityEngine.Events;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public float bullet_damage;
+    public float bullet_damage = 10f;
+    public float bullet_speed = 5f;
 
     public float fire_rate;
     private float fire_rate_timer;
@@ -16,6 +17,13 @@ public class EnemyAttack : MonoBehaviour
     public bool one_shot = false;
 
     public UnityEvent shoot_way;
+
+    private GameObject player_obj;
+
+    private void Start()
+    {
+        player_obj = GameObject.Find("player");
+    }
 
     //shoot with random rotation
     public void Shoot(Vector3 bullet_direction, float bullet_speed, float bullet_angularSpeed) 
@@ -41,7 +49,7 @@ public class EnemyAttack : MonoBehaviour
 
     public void ShootTest() 
     {
-        Shoot(new Vector3(0,-1,0), 5f, 30f);
+        Shoot(new Vector3(0,-1,0), bullet_speed, 30f);
     }
 
     //bullets not Uniform
@@ -52,7 +60,7 @@ public class EnemyAttack : MonoBehaviour
 
         for (int i = 0; i < fire_burst; i++) 
         {
-            Shoot(new Vector3(Mathf.Cos(Mathf.Deg2Rad * angle * i), Mathf.Sin(Mathf.Deg2Rad * angle * i), 0), 5f, 30f);
+            Shoot(new Vector3(Mathf.Cos(Mathf.Deg2Rad * angle * i), Mathf.Sin(Mathf.Deg2Rad * angle * i), 0), bullet_speed, 30f);
         }
     }
 
@@ -64,7 +72,7 @@ public class EnemyAttack : MonoBehaviour
 
         for (int i = 0; i < fire_burst; i++)
         {
-            Shoot(new Vector3(Mathf.Cos(Mathf.Deg2Rad * (angle * i + random_startAngle)), Mathf.Sin(Mathf.Deg2Rad * (angle * i + random_startAngle)), 0), 5f, 30f);
+            Shoot(new Vector3(Mathf.Cos(Mathf.Deg2Rad * (angle * i + random_startAngle)), Mathf.Sin(Mathf.Deg2Rad * (angle * i + random_startAngle)), 0), bullet_speed, 30f);
         }
     }
 
@@ -76,7 +84,7 @@ public class EnemyAttack : MonoBehaviour
 
         for (int i = 0; i < fire_burst; i++)
         {
-            StartCoroutine(DelayShoot(i * fire_gap, new Vector3(Mathf.Cos(Mathf.Deg2Rad * (angle * i + random_startAngle)), Mathf.Sin(Mathf.Deg2Rad * (angle * i + random_startAngle)), 0), 5f, 30f));
+            StartCoroutine(DelayShoot(i * fire_gap, new Vector3(Mathf.Cos(Mathf.Deg2Rad * (angle * i + random_startAngle)), Mathf.Sin(Mathf.Deg2Rad * (angle * i + random_startAngle)), 0), bullet_speed, Random.Range(180f, 720f)));
         }
     }
 
@@ -85,7 +93,16 @@ public class EnemyAttack : MonoBehaviour
     {
         for (int i = 0; i < fire_burst; i++) 
         {
-            StartCoroutine(DelayShoot(i * fire_gap, new Vector3(0, -1, 0), 5f, 30f));
+            StartCoroutine(DelayShoot(i * fire_gap, new Vector3(0, -1, 0), bullet_speed, 30f));
+        }
+    }
+
+    public void ShootBurstAtPlayer() 
+    {
+        for (int i = 0; i < fire_burst; i++)
+        {
+            Vector3 direction = (player_obj.transform.position - transform.position).normalized;
+            StartCoroutine(DelayShoot(i * fire_gap, direction, bullet_speed, 30f));
         }
     }
 

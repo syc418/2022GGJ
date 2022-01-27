@@ -10,14 +10,23 @@ public class DestroyableObstacle : MonoBehaviour
     public void Damage(float dmg) 
     {
         health -= dmg;
-        if (health <= 0) 
+        if (health <= 0)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 
     public void Awake()
     {
         health = health_max;
+    }
+
+    void Update()
+    {
+        if (transform.position.y < -8)
+        {
+            Destroy(gameObject);
+        }
+
     }
 }
