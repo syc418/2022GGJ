@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerInteract : MonoBehaviour
 {
     public Slider health;
+    public float health_ratio = 1f;
 
     //InVulnerable Time
     [SerializeField]
@@ -22,7 +23,7 @@ public class PlayerInteract : MonoBehaviour
         //Debug.Log("Triggered" + collision.gameObject.tag);
         if (collision.gameObject.tag == "food")
         {
-            health.value += collision.gameObject.GetComponent<food>().recovery;
+            health.value += collision.gameObject.GetComponent<food>().recovery * health_ratio;
             Destroy(collision.gameObject);
             health.GetComponent<Health>().iseat = true;
         }
