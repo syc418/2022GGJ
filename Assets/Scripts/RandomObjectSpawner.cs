@@ -10,7 +10,7 @@ public class RandomObjectSpawner : MonoBehaviour
     private float spawn_speed_timer;
 
     public GameObject parent;
-    public GameObject obj;
+    private GameObject obj;
 
     private void Update()
     {

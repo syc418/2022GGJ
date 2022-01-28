@@ -31,6 +31,22 @@ public class PlayerAttack : MonoBehaviour
         rb.angularVelocity = bullet_angularSpeed;
     }
 
+    //shoot [fire_burst] bullet at once, with [fire_gap] time between each bullet
+    public void ShootBurst()
+    {
+        float random_angularspeed = Random.Range(180, 720);
+        for (int i = 0; i < fire_burst; i++)
+        {
+            StartCoroutine(DelayShoot(i * fire_gap, new Vector3(0, 1, 0), bullet_speed, 0f));
+        }
+    }
+
+    private IEnumerator DelayShoot(float delay, Vector3 bullet_direction, float bullet_speed, float bullet_angularSpeed)
+    {
+        yield return new WaitForSeconds(delay);
+        Shoot(bullet_direction, bullet_speed, bullet_angularSpeed);
+    }
+
     private void ShootUpward()
     {
         Shoot(new Vector3(0, 1, 0), bullet_speed, 0f);
@@ -40,7 +56,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (fire_rate_timer <= 0)
         {
-            ShootUpward();
+            ShootBurst();
             fire_rate_timer = fire_rate;
         }
         else

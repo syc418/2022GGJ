@@ -301,7 +301,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &34007709
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2701,7 +2701,6 @@ MonoBehaviour:
   - {fileID: 8956868601078305113, guid: cc8d9011a0a1adb46b98d2bc7500923e, type: 3}
   spawn_speed: 15
   parent: {fileID: 0}
-  obj: {fileID: 0}
 --- !u!4 &1733107553
 Transform:
   m_ObjectHideFlags: 0
@@ -3092,13 +3091,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6144654575495832030}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 94534869}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!114 &6144654575495832032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3113,7 +3112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet_damage: 1
   fire_rate: 0.5
-  fire_gap: 0
+  fire_gap: 0.1
   fire_burst: 1
   bullet_prefab: {fileID: 7060160501887764692, guid: d5a789bbaa050b446903560e42b8c699, type: 3}
   bullet_speed: 10
