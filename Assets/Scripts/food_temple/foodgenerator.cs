@@ -35,9 +35,9 @@ public class foodgenerator : MonoBehaviour
 
         collider = GetComponent<Collider2D>();
         Vector3 position = collider.bounds.center;
-        Debug.Log("The bounds is " + position);
-        Debug.Log("The range of x is " + collider.bounds.extents.x);
-        Debug.Log("The range of x is " + collider.bounds.extents.y);
+        //Debug.Log("The bounds is " + position);
+        //Debug.Log("The range of x is " + collider.bounds.extents.x);
+        //Debug.Log("The range of x is " + collider.bounds.extents.y);
         position.x += Random.Range(-1f * collider.bounds.extents.x, collider.bounds.extents.x);
         position.y += Random.Range(-1f * collider.bounds.extents.y, collider.bounds.extents.y);
 
@@ -45,13 +45,13 @@ public class foodgenerator : MonoBehaviour
         while (Vector2.Distance(last_postion, position) < 0.3)
         {
             //position = this.transform.position;
-            Debug.Log("Generate new position");
+            //Debug.Log("Generate new position");
             position.x += Random.Range(-1f * collider.bounds.extents.x, collider.bounds.extents.x);
             position.y += Random.Range(-1f * collider.bounds.extents.y, collider.bounds.extents.y);
             //food_position.x = position.x + Random.Range(-1f * collider.bounds.extents.x, collider.bounds.extents.x);
             //food_position.y = position.y + Random.Range(-1f * collider.bounds.extents.y, collider.bounds.extents.y);
         }
-        Debug.Log("The food position is " + position);
+        //Debug.Log("The food position is " + position);
         return position;
     }
 }

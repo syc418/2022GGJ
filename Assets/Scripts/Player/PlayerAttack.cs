@@ -22,7 +22,7 @@ public class PlayerAttack : MonoBehaviour
         //get bullet from pool
         GameObject bullet = GameObject.Instantiate(bullet_prefab, this.transform.position, this.transform.rotation, this.transform);
         //random rotation
-        bullet.transform.rotation = transform.rotation * Quaternion.Euler(0, 0, Random.Range(0, 360));
+        bullet.transform.rotation = transform.rotation;
         //set bullet damage
         bullet.GetComponent<PlayerBullet>().bullet_damage = bullet_damage;
         //add force & angular speed
@@ -33,7 +33,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void ShootUpward()
     {
-        Shoot(new Vector3(0, 1, 0), bullet_speed, 30f);
+        Shoot(new Vector3(0, 1, 0), bullet_speed, 0f);
     }
 
     private void Update()

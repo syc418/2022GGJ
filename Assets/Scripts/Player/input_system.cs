@@ -13,9 +13,6 @@ public class input_system : MonoBehaviour
     //dashing
     private bool is_dashing;
     [SerializeField]
-    private float dash_time;
-    private float dash_time_timer;
-    [SerializeField]
     private float dash_amount;
     [SerializeField]
     private float dash_cooldown;

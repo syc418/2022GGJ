@@ -76,24 +76,38 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
-    //bullets Uniform with delay (spiral)
+    //bullets Uniform with delay (spiral) - random angle
     public void ShootInCircleUniformDelay()
     {
         float random_startAngle = Random.Range(0, 360);
         float angle = (360 / fire_burst);
+        float random_angularspeed = Random.Range(180, 720);
 
         for (int i = 0; i < fire_burst; i++)
         {
-            StartCoroutine(DelayShoot(i * fire_gap, new Vector3(Mathf.Cos(Mathf.Deg2Rad * (angle * i + random_startAngle)), Mathf.Sin(Mathf.Deg2Rad * (angle * i + random_startAngle)), 0), bullet_speed, Random.Range(180f, 720f)));
+            StartCoroutine(DelayShoot(i * fire_gap, new Vector3(Mathf.Cos(Mathf.Deg2Rad * (angle * i + random_startAngle)), Mathf.Sin(Mathf.Deg2Rad * (angle * i + random_startAngle)), 0), bullet_speed, random_angularspeed));
+        }
+    }
+
+    //bullets Uniform with delay (spiral) - random angle
+    public void ShootInCircleUniformDelayFixAngle()
+    {
+        float angle = (360 / fire_burst);
+        float random_angularspeed = Random.Range(180, 720);
+
+        for (int i = 0; i < fire_burst; i++)
+        {
+            StartCoroutine(DelayShoot(i * fire_gap, new Vector3(Mathf.Cos(Mathf.Deg2Rad * (angle * i + transform.rotation.eulerAngles.z)), Mathf.Sin(Mathf.Deg2Rad * (angle * i + transform.rotation.eulerAngles.z)), 0), bullet_speed, random_angularspeed));
         }
     }
 
     //shoot [fire_burst] bullet at once, with [fire_gap] time between each bullet
     public void ShootBurst() 
     {
+        float random_angularspeed = Random.Range(180, 720);
         for (int i = 0; i < fire_burst; i++) 
         {
-            StartCoroutine(DelayShoot(i * fire_gap, new Vector3(0, -1, 0), bullet_speed, 30f));
+            StartCoroutine(DelayShoot(i * fire_gap, new Vector3(Mathf.Cos(Mathf.Deg2Rad * (transform.rotation.eulerAngles.z)), Mathf.Sin(Mathf.Deg2Rad * (transform.rotation.eulerAngles.z)), 0), bullet_speed, random_angularspeed));
         }
     }
 
@@ -122,6 +136,12 @@ public class EnemyAttack : MonoBehaviour
         }
 
         //TO DO : destory object when it is out of sight
+    }
+
+    private void OnDestroy()
+    {
+        //safe destroy
+        transform.DetachChildren();
     }
 
 }

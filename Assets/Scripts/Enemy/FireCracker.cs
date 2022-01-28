@@ -10,6 +10,7 @@ public class FireCracker : MonoBehaviour
 
     public float fireCracker_lifeTime;
 
+
     public void Play_Explosion() 
     {
         //show explosion particle
@@ -46,5 +47,7 @@ public class FireCracker : MonoBehaviour
         Destroy(this.gameObject);
 
     }
+
+
 
 }
