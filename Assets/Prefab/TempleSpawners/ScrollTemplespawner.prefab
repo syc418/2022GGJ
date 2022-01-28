@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79af461d9caf0f24abf061bfe41b5f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj_prefab: {fileID: 2771130385937832471, guid: 18034a0ebc835804a8cbee36b2ca7c8d, type: 3}
+  obj_prefab: {fileID: 7521286746777930771, guid: b4c65927b36301847aa53dee89f166fb, type: 3}
   spawn_speed: 5
   parent: {fileID: 0}
 --- !u!61 &5721939895993515377

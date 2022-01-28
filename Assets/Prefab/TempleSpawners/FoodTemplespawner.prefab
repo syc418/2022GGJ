@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1374926491348634754}
   - component: {fileID: 1374926491348634755}
   m_Layer: 0
-  m_Name: foodspawner
+  m_Name: FoodTemplespawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79af461d9caf0f24abf061bfe41b5f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj_prefab: {fileID: 1564990589682344813, guid: 731f692c792ada64b9c47826d5c2d20c, type: 3}
+  obj_prefab: {fileID: 2603861101006989999, guid: 9ae766c0b41636a429d4bb192ce200bc, type: 3}
   spawn_speed: 3
   parent: {fileID: 0}
 --- !u!61 &1374926491348634755
