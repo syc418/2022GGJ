@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class input_system : MonoBehaviour
 {
@@ -17,7 +18,8 @@ public class input_system : MonoBehaviour
     [SerializeField]
     private float dash_cooldown;
     private float dash_cooldown_timer = 0;
-    private Vector2 dash_direction;
+    [SerializeField]
+    private Slider dash_bar_obj;
 
     //InVulnerable
     private PlayerInteract interact;
@@ -43,6 +45,17 @@ public class input_system : MonoBehaviour
 
         dash_cooldown_timer -= Time.deltaTime;
 
+        //update dash timer display
+        if (dash_bar_obj)
+        {
+            dash_bar_obj.value += Time.deltaTime;
+            if (dash_bar_obj.value >= dash_bar_obj.maxValue) 
+            {
+                //disable when full
+                dash_bar_obj.gameObject.SetActive(false);
+            }
+        }
+
     }
 
     private void FixedUpdate()
@@ -64,6 +77,14 @@ public class input_system : MonoBehaviour
             is_dashing = true;
             dash_cooldown_timer = dash_cooldown;
             interact.SetInVulnerable(dash_InVulnerableTime);
+
+            //show dash timer display
+            if (dash_bar_obj) 
+            {
+                dash_bar_obj.gameObject.SetActive(true);
+                dash_bar_obj.maxValue = dash_cooldown;
+                dash_bar_obj.value = 0;
+            }
         }
     }
 

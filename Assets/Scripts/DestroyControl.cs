@@ -12,13 +12,13 @@ public class DestroyControl : MonoBehaviour
         Transform[] allChildren = GetComponentsInChildren<Transform>();
         foreach (Transform child in allChildren)
         {
-            Debug.Log(child.gameObject.name);
-            Debug.Log(allChildren.Length);
+            //Debug.Log(child.gameObject.name);
+            //Debug.Log(allChildren.Length);
             //child.gameObject.SetActive(false);
         }
         if (allChildren.Length == 1)
         {
-            Debug.Log("all destroyed");
+            //Debug.Log("all destroyed");
             //obstacles are destroyed instead of exploding itself.
             gameObject.SetActive(false);
         }
