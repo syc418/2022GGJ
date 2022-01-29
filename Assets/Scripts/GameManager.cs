@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         timer = Timer.GetComponent<Slider>();
+        timer.maxValue = Game_Time;
         timer.value = 0;
     }
 
@@ -42,7 +43,7 @@ public class GameManager : MonoBehaviour
 
     public void Boss()
     {
-        GameObject obj = GameObject.Instantiate(boss, this.gameObject.transform.position, Quaternion.identity);
+        GameObject obj = GameObject.Instantiate(boss, this.gameObject.transform.position, Quaternion.identity, this.transform);
         Destroy(Timer);
         DisableObjs();
         EnableFood();

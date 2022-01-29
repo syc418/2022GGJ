@@ -38,7 +38,6 @@ public class RandomObjectSpawner : MonoBehaviour
     {
         //spawn random obj at position (0,0,0)
         int index = Random.Range(0, obj_prefabs.Count);
-
         //never repeat
         while (index == last_index) 
         {
