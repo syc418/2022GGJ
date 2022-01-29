@@ -8,6 +8,11 @@ public class Health : MonoBehaviour
     private float current_health;
     private float last_health;
     private bool isDecreasing = false;
+    private bool level1 = false;
+    private bool level2 = false;
+    private bool level3 = false;
+    private GameObject GM;
+    private List<int> thresholds;
 
     public Slider health;
     public bool iseat = false;
@@ -20,10 +25,11 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GM = GameObject.FindWithTag("GameManager");
         current_health = health.value;
         last_health = health.value;
         InvokeRepeating("decrease_health", startcheck, checkrate);
-
+        thresholds = new List<int> { 50, 75, 125 };
         
     }
 
@@ -31,18 +37,36 @@ public class Health : MonoBehaviour
     void Update()
     {
         current_health = health.value;
-        if (isDecreasing)
+        
+        if (current_health == 0) { GM.GetComponent<GameManager>().GameOver(); }
+
+        if (isDecreasing) { health.value -= decreasing_ratio * Time.deltaTime; }
+
+        if (iseat) { isDecreasing = false; }
+        
+        if (current_health >= thresholds[0] && !level1)
         {
-            //Debug.Log("Decrease now");
-            health.value -= decreasing_ratio * Time.deltaTime;
+            //reach 50, make a choice
+            health.maxValue = thresholds[1];
+            health.GetComponent<RectTransform>().sizeDelta = new Vector2(240f, 20f);
+            level1 = true;
         }
 
-        if(iseat)
+        if(current_health >= thresholds[1] && !level2)
         {
-            //Debug.Log("eat now, stop decrease");
-            isDecreasing = false;
+            //reach 75, make a choice
+            health.maxValue = thresholds[2];
+            health.GetComponent<RectTransform>().sizeDelta = new Vector2(400f, 20f);
+            level2 = true;
         }
-        
+
+        if (current_health >= thresholds[2] && !level3)
+        {
+            //reach 125, make a choice
+            health.maxValue = 200;
+            health.GetComponent<RectTransform>().sizeDelta = new Vector2(640f, 20f);
+            level3 = true;
+        }
     }
 
     private void decrease_health()

@@ -33,8 +33,6 @@ public class food_temple : MonoBehaviour
         yield return new WaitForSeconds(disapear_time);
         this.GetComponent<Animator>().enabled = true;
         gameObject.transform.GetChild(0).gameObject.SetActive(true);
-        //GameObject obj = GameObject.Instantiate(foodgenerator, this.transform.position, Quaternion.identity, this.transform);
-        //this.GetComponent<FoodShowUp>().ShowUpFood(this.transform.position);
     }
 
     public void StopDisappearAnimator()

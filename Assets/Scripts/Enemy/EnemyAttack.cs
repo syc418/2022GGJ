@@ -40,11 +40,32 @@ public class EnemyAttack : MonoBehaviour
         rb.angularVelocity = bullet_angularSpeed;
     }
 
+    //shoot with random rotation
+    public void ShootAccelerate(Vector3 bullet_direction, float bullet_speed, float bullet_angularSpeed)
+    {
+        //get bullet from pool
+        GameObject bullet = EnemyBullet_Pool._this.Get(this.transform.position, this.transform.rotation, this.transform);
+        //random rotation
+        bullet.transform.rotation = transform.rotation * Quaternion.Euler(0, 0, Random.Range(0, 360));
+        //set bullet damage
+        bullet.GetComponent<EnemyBullet>().bullet_damage = bullet_damage;
+        //add force & angular speed
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        rb.AddForce(bullet_direction * bullet_speed, ForceMode2D.Force);
+        rb.angularVelocity = bullet_angularSpeed;
+    }
+
 
     private IEnumerator DelayShoot(float delay, Vector3 bullet_direction, float bullet_speed, float bullet_angularSpeed)
     {
         yield return new WaitForSeconds(delay);
         Shoot(bullet_direction, bullet_speed, bullet_angularSpeed);
+    }
+
+    private IEnumerator DelayShootAcc(float delay, Vector3 bullet_direction, float bullet_speed, float bullet_angularSpeed)
+    {
+        yield return new WaitForSeconds(delay);
+        ShootAccelerate(bullet_direction, bullet_speed, bullet_angularSpeed);
     }
 
     public void ShootTest() 
@@ -108,6 +129,16 @@ public class EnemyAttack : MonoBehaviour
         for (int i = 0; i < fire_burst; i++) 
         {
             StartCoroutine(DelayShoot(i * fire_gap, new Vector3(Mathf.Cos(Mathf.Deg2Rad * (transform.rotation.eulerAngles.z)), Mathf.Sin(Mathf.Deg2Rad * (transform.rotation.eulerAngles.z)), 0), bullet_speed, random_angularspeed));
+        }
+    }
+
+    //shoot [fire_burst] bullet at once, with [fire_gap] time between each bullet
+    public void ShootBurstAcc()
+    {
+        float random_angularspeed = Random.Range(180, 720);
+        for (int i = 0; i < fire_burst; i++)
+        {
+            StartCoroutine(DelayShootAcc(i * fire_gap, new Vector3(Mathf.Cos(Mathf.Deg2Rad * (transform.rotation.eulerAngles.z)), Mathf.Sin(Mathf.Deg2Rad * (transform.rotation.eulerAngles.z)), 0), bullet_speed, random_angularspeed));
         }
     }
 
