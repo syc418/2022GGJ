@@ -18,4 +18,9 @@ public class Buttons : MonoBehaviour
     {
         currentScene.SetActive(false);
     }
+
+    public void EnterMainLevel()
+    {
+        SceneManager.LoadScene("MainLevel");
+    }
 }
