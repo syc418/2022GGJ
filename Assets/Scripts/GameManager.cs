@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        SceneManager.LoadScene("End");
+        SceneManager.LoadScene("Epilogue");
         //or loading the end scene
     }
 

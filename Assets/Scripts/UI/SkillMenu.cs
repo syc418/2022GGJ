@@ -6,9 +6,12 @@ public class SkillMenu : MonoBehaviour
 {
     // SkillObject firstSkill
     // SkillObject secondSkill
+    public GameObject pauseMenuController;
+
     public void OpenSkillMenu()
     {
         // Pause Game
+        pauseMenuController.GetComponent<PauseMenu>().PauseGame();
         gameObject.SetActive(true);
     }
 
@@ -51,7 +54,7 @@ public class SkillMenu : MonoBehaviour
             animator2.GetCurrentAnimatorStateInfo(0).IsName("idle_SkillCard"))
         {
             gameObject.SetActive(false);
+            pauseMenuController.GetComponent<PauseMenu>().ResumeGame();
         }
-        // Resume Game
     }
 }
