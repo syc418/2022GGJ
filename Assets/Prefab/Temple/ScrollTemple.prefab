@@ -96,7 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ab188daed2513148a1b7e753835d2ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health_max: 2
+  health_max: 1
+  health: 0
 --- !u!61 &7521286745252756422
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -292,7 +293,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ab188daed2513148a1b7e753835d2ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health_max: 2
+  health_max: 1
+  health: 0
 --- !u!1 &7521286746633954807
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,7 +407,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ab188daed2513148a1b7e753835d2ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health_max: 2
+  health_max: 1
+  health: 0
 --- !u!1 &7521286746777930771
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,7 +695,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ab188daed2513148a1b7e753835d2ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health_max: 2
+  health_max: 1
+  health: 0
 --- !u!1001 &7521286746665385359
 PrefabInstance:
   m_ObjectHideFlags: 0

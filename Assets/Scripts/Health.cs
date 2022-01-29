@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class Health : MonoBehaviour
 {
     private float current_health;
@@ -19,6 +20,8 @@ public class Health : MonoBehaviour
     public float startcheck = 3f;
     public float checkrate = 2f;
     public float decreasing_ratio = 1.5f;
+
+    public GameObject playerskill;
 
     
 
@@ -38,7 +41,7 @@ public class Health : MonoBehaviour
     {
         current_health = health.value;
         
-        if (current_health == 0) { GM.GetComponent<GameManager>().GameOver(); }
+        if (current_health <= 0) { GM.GetComponent<GameManager>().GameOver(); }
 
         if (isDecreasing) { health.value -= decreasing_ratio * Time.deltaTime; }
 
@@ -47,6 +50,7 @@ public class Health : MonoBehaviour
         if (current_health >= thresholds[0] && !level1)
         {
             //reach 50, make a choice
+            skill();
             health.maxValue = thresholds[1];
             health.GetComponent<RectTransform>().sizeDelta = new Vector2(240f, 20f);
             level1 = true;
@@ -55,6 +59,7 @@ public class Health : MonoBehaviour
         if(current_health >= thresholds[1] && !level2)
         {
             //reach 75, make a choice
+            skill();
             health.maxValue = thresholds[2];
             health.GetComponent<RectTransform>().sizeDelta = new Vector2(400f, 20f);
             level2 = true;
@@ -63,6 +68,7 @@ public class Health : MonoBehaviour
         if (current_health >= thresholds[2] && !level3)
         {
             //reach 125, make a choice
+            skill();
             health.maxValue = 200;
             health.GetComponent<RectTransform>().sizeDelta = new Vector2(640f, 20f);
             level3 = true;
@@ -79,5 +85,10 @@ public class Health : MonoBehaviour
             iseat = false;
         }
         last_health = current_health;
+    }
+
+    private void skill()
+    {
+        playerskill.GetComponent<SkillMenu>().OpenSkillMenu();
     }
 }
