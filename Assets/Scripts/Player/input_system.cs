@@ -16,7 +16,7 @@ public class input_system : MonoBehaviour
     [SerializeField]
     private float dash_amount;
     [SerializeField]
-    private float dash_cooldown;
+    public float dash_cooldown;
     private float dash_cooldown_timer = 0;
     [SerializeField]
     private Slider dash_bar_obj;

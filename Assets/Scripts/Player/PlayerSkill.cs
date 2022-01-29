@@ -19,31 +19,29 @@ public class PlayerSkill : MonoBehaviour
 
     public void DaKuaiDuoYi()
     {
-        player.GetComponent<PlayerInteract>().health_ratio = 1.5f;
+        player.GetComponent<PlayerInteract>().health_ratio = 1.3f;
     }
 
     public void TongPiTieGu()
     {
-        // player.GetComponent<input_system>().speed = 13;
-        return;
+        player.GetComponent<PlayerInteract>().damage_ratio = 0.7f;
     }
 
     public void ZheTianBiRi()
     {
         player.transform.GetChild(0).gameObject.GetComponent<PlayerAttack>().bullet_damage = 1.5f;
-        player.transform.GetChild(0).gameObject.GetComponent<PlayerAttack>().fire_burst = 1.5f;
+        player.transform.GetChild(0).gameObject.transform.localScale = new Vector3(1.5f, 1.5f, 1.0f);
 
     }
 
     public void ShenQingRuYan()
     {
-        // player.GetComponent<input_system>().dash_cooldown = 1.5;
-        return;
+        player.GetComponent<input_system>().dash_cooldown = 1.5f;
     }
 
     public void DuoChiBuPang()
     {
-        player.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        player.transform.localScale = new Vector3(0.5f, 0.5f, 1.0f);
     }
 
     void Start()

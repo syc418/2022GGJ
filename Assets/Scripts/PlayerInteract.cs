@@ -7,6 +7,7 @@ public class PlayerInteract : MonoBehaviour
 {
     public Slider health;
     public float health_ratio = 1f;
+    public float damage_ratio = 1f;
 
     //InVulnerable Time
     [SerializeField]
@@ -33,7 +34,7 @@ public class PlayerInteract : MonoBehaviour
     {
         if (is_Vulnreable) 
         {
-            health.value -= damage;
+            health.value -= damage * damage_ratio;
             animator.SetTrigger("IsDamaged");
             SetInVulnerable(InVulnerableTime);
         }
