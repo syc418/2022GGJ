@@ -12,6 +12,7 @@ public class BossBehavior : MonoBehaviour
 
     [SerializeField]
     private float move_speed;
+    private bool is_moving = false;
 
     [SerializeField]
     private UnityEvent attack;
@@ -61,23 +62,25 @@ public class BossBehavior : MonoBehaviour
             {
                 //stay, do nothing
                 animator.SetBool("IsMoving", false);
+                is_moving = false;
                 animator.SetTrigger("Pose");
             }
             else if (randomAction == 1)
             {
                 //move
                 animator.SetBool("IsMoving", true);
+                is_moving = true;
                 destination = new Vector3(Random.Range(-9f, 9f), Random.Range(1.5f, 3.5f), 0);
                 while ((destination - transform.position).magnitude <= 5f) 
                 {
                     destination = new Vector3(Random.Range(-9f, 9f), Random.Range(1.5f, 3.5f), 0);
                 }
-                rb.MovePosition(destination);
             }
             else if (randomAction == 2)
             {
                 //teleport
                 animator.SetBool("IsMoving", false);
+                is_moving = false;
                 destination = new Vector3(Random.Range(-9f, 9f), Random.Range(1.5f, 3.5f), 0);
                 while ((destination - transform.position).magnitude <= 5f)
                 {
@@ -86,6 +89,11 @@ public class BossBehavior : MonoBehaviour
                 animator.SetTrigger("Teleport");
             }
             action_timer = action_rate;
+        }
+        //move position
+        if (is_moving) 
+        {
+            transform.position = Vector3.Lerp(transform.position, destination, move_speed * Time.deltaTime);
         }
 
         //update health
