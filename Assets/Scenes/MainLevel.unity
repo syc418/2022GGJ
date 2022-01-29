@@ -1279,6 +1279,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FoodTemplespawner
       objectReference: {fileID: 0}
+    - target: {fileID: 1374926491348634752, guid: 1017bc1dd476c564e8292e8f001582b4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1374926491348634754, guid: 1017bc1dd476c564e8292e8f001582b4, type: 3}
       propertyPath: parent
       value: 
@@ -1681,6 +1685,10 @@ PrefabInstance:
     - target: {fileID: 5721939895993515406, guid: 30317083477577a47b458e808e134aaf, type: 3}
       propertyPath: m_Name
       value: ScrollTemplespawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 5721939895993515406, guid: 30317083477577a47b458e808e134aaf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30317083477577a47b458e808e134aaf, type: 3}
@@ -2458,6 +2466,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaternTemplespawner
       objectReference: {fileID: 0}
+    - target: {fileID: 4516833621716430278, guid: 7105ce4ed378f5f4f8386f452550fc47, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7105ce4ed378f5f4f8386f452550fc47, type: 3}
 --- !u!1 &1166242085
@@ -3120,6 +3132,7 @@ MonoBehaviour:
   - {fileID: 8956868601078305113, guid: cc8d9011a0a1adb46b98d2bc7500923e, type: 3}
   spawn_speed: 15
   parent: {fileID: 0}
+  is_active: 1
 --- !u!4 &1733107553
 Transform:
   m_ObjectHideFlags: 0

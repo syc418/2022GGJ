@@ -5,7 +5,7 @@ using UnityEngine;
 public class DestroyableObstacle : MonoBehaviour
 {
     public float health_max;
-    private float health;
+    public float health;
 
     public void Damage(float dmg) 
     {
@@ -29,4 +29,5 @@ public class DestroyableObstacle : MonoBehaviour
         }
 
     }
+
 }

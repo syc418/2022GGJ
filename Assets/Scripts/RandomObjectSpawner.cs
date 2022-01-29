@@ -12,27 +12,44 @@ public class RandomObjectSpawner : MonoBehaviour
     public GameObject parent;
     private GameObject obj;
 
+    public bool is_active = true;
+
+    private int last_index = -1;
+
+
     private void Update()
     {
-        if (spawn_speed_timer <= 0)
+        if (is_active) 
         {
-            //spawn random obj at position (0,0,0)
-            int index = Random.Range(0, obj_prefabs.Count);
-
-            //kill existing one if left out
-            if (obj) Destroy(obj.gameObject);
-            obj = GameObject.Instantiate(obj_prefabs[index], transform.position, Quaternion.identity, this.transform);
-            if(parent) obj.transform.SetParent(parent.transform);
-
-            //reset timer
-            spawn_speed_timer = spawn_speed;
-
+            if (spawn_speed_timer <= 0)
+            {
+                Spawn();
+                //reset timer
+                spawn_speed_timer = spawn_speed;
+            }
+            else
+            {
+                spawn_speed_timer -= Time.deltaTime;
+            }
         }
-        else
+    }
+
+    public void Spawn() 
+    {
+        //spawn random obj at position (0,0,0)
+        int index = Random.Range(0, obj_prefabs.Count);
+
+        //never repeat
+        while (index == last_index) 
         {
-            spawn_speed_timer -= Time.deltaTime;
+            index = Random.Range(0, obj_prefabs.Count);
         }
+        last_index = index;
 
-        //TO DO : destory object when it is out of sight
+        //kill existing one if left out
+        if (obj) Destroy(obj.gameObject);
+        obj = GameObject.Instantiate(obj_prefabs[index], transform.position, Quaternion.identity, this.transform);
+        if (parent) obj.transform.SetParent(parent.transform);
+
     }
 }
