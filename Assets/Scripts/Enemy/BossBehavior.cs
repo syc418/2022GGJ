@@ -68,6 +68,10 @@ public class BossBehavior : MonoBehaviour
                 //move
                 animator.SetBool("IsMoving", true);
                 destination = new Vector3(Random.Range(-9f, 9f), Random.Range(1.5f, 3.5f), 0);
+                while ((destination - transform.position).magnitude <= 5f) 
+                {
+                    destination = new Vector3(Random.Range(-9f, 9f), Random.Range(1.5f, 3.5f), 0);
+                }
                 rb.MovePosition(destination);
             }
             else if (randomAction == 2)
@@ -75,6 +79,10 @@ public class BossBehavior : MonoBehaviour
                 //teleport
                 animator.SetBool("IsMoving", false);
                 destination = new Vector3(Random.Range(-9f, 9f), Random.Range(1.5f, 3.5f), 0);
+                while ((destination - transform.position).magnitude <= 5f)
+                {
+                    destination = new Vector3(Random.Range(-9f, 9f), Random.Range(1.5f, 3.5f), 0);
+                }
                 animator.SetTrigger("Teleport");
             }
             action_timer = action_rate;
