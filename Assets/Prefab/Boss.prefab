@@ -841,11 +841,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj_prefabs:
-  - {fileID: 535316006535337350, guid: 690b23e9be1003547992c37749d9619c, type: 3}
-  - {fileID: 7314859809415905008, guid: 4727fa15b04a84e4281cc5f2d8008cb2, type: 3}
-  - {fileID: 2805697536527287887, guid: ad43dd2eb53d95340b304482f79734d6, type: 3}
+  - {fileID: 5288815999989803069, guid: c5001c4bcd4282749960ea3802fd1438, type: 3}
   - {fileID: 1772751449982236011, guid: 14f102ca409a5604ea5d1fd36c1ad2be, type: 3}
-  - {fileID: 8956868601078305113, guid: cc8d9011a0a1adb46b98d2bc7500923e, type: 3}
   - {fileID: 6923280028660421164, guid: da83f57c678c81f449ec08a56874342c, type: 3}
   - {fileID: 310735252525040548, guid: d43a378a7a8c46640b1766e6c4436d3d, type: 3}
   - {fileID: 266330329703137296, guid: 485071adf9f40d74cb86da307a6f2c44, type: 3}
