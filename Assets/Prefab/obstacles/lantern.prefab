@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d3e8d0e21fb8584a9e80b6db93f1287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time_to_explode: 3
+  time_to_explode: 1.5
   distance_to_warning: 3
 --- !u!95 &5946363683591703299
 Animator:

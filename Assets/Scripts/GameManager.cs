@@ -59,4 +59,9 @@ public class GameManager : MonoBehaviour
     {
         food_temple_spawner.SetActive(true);
     }
+
+    public void EndGame()
+    {
+        Application.Quit();
+    }
 }
