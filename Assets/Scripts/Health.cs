@@ -32,7 +32,7 @@ public class Health : MonoBehaviour
         current_health = health.value;
         last_health = health.value;
         InvokeRepeating("decrease_health", startcheck, checkrate);
-        thresholds = new List<int> { 50, 75, 125 };
+        thresholds = new List<int> { 70, 120, 200 };
         
     }
 
@@ -69,7 +69,7 @@ public class Health : MonoBehaviour
         {
             //reach 125, make a choice
             skill();
-            health.maxValue = 200;
+            health.maxValue = 220;
             health.GetComponent<RectTransform>().sizeDelta = new Vector2(640f, 20f);
             level3 = true;
         }
