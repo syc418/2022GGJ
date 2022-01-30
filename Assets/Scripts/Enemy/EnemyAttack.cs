@@ -31,9 +31,12 @@ public class EnemyAttack : MonoBehaviour
         //get bullet from pool
         GameObject bullet = EnemyBullet_Pool._this.Get(this.transform.position, this.transform.rotation, this.transform);
         //random rotation
-        bullet.transform.rotation = transform.rotation * Quaternion.Euler(0, 0, Random.Range(0, 360)) ;
+        bullet.transform.rotation = transform.rotation * Quaternion.Euler(0, 0, Random.Range(0, 360));
         //set bullet damage
         bullet.GetComponent<EnemyBullet>().bullet_damage = bullet_damage;
+        //detach bullet
+        bullet.transform.parent = null;
+
         //add force & angular speed
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(bullet_direction * bullet_speed, ForceMode2D.Impulse);
