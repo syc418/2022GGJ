@@ -4,5 +4,8 @@ using UnityEngine;
 
 public abstract class Skill : MonoBehaviour
 {
+    public string name;
+    public string text;
+
     public abstract void Select();
 }

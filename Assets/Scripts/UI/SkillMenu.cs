@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SkillMenu : MonoBehaviour
 {
@@ -31,12 +32,17 @@ public class SkillMenu : MonoBehaviour
         }
         firstSkill = playerSkillController.transform.GetChild(skillList[0]).gameObject;
         secondSkill = playerSkillController.transform.GetChild(skillList[1]).gameObject;
+
+        gameObject.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = firstSkill.GetComponent<Skill>().text;
+        gameObject.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = secondSkill.GetComponent<Skill>().text;
+
         gameObject.SetActive(true);
     }
 
     public void SelectFirstSkill()
     {
         firstSkill.GetComponent<Skill>().Select();
+        // gameObject.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = firstSkill.GetComponent<Skill>().text;
         skillList.RemoveAt(0);
         
         // Debug.Log("SelectFirstSkill");
@@ -55,6 +61,7 @@ public class SkillMenu : MonoBehaviour
     public void SelectSecondSkill()
     {
         secondSkill.GetComponent<Skill>().Select();
+        // gameObject.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = firstSkill.GetComponent<Skill>().text;
         skillList.RemoveAt(1);
         // Debug.Log("SelectSecondSkill");
         Animator animator1 = (Animator)gameObject.transform.GetChild(1).gameObject.GetComponent(typeof(Animator));
