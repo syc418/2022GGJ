@@ -13,6 +13,11 @@ public class GameManager : MonoBehaviour
     public GameObject boss;
     public GameObject food_temple_spawner;
 
+    public GameObject win;
+    public GameObject lose;
+    public GameObject exit;
+    public GameObject restart;
+
     private bool isBossUp = false;
 
 
@@ -37,16 +42,23 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        SceneManager.LoadScene("Epilogue");
-        //or loading the end scene
+        lose.SetActive(true);
+        exit.SetActive(true);
+        restart.SetActive(true);
     }
 
+    public void WinGame()
+    {
+        win.SetActive(true);
+        exit.SetActive(true);
+        restart.SetActive(true);
+    }
     public void Boss()
     {
         GameObject obj = GameObject.Instantiate(boss, this.gameObject.transform.position, Quaternion.identity, this.transform);
         Destroy(Timer);
         DisableObjs();
-        EnableFood();
+        food_temple_spawner.SetActive(true);
 
     }
 
@@ -55,13 +67,14 @@ public class GameManager : MonoBehaviour
         foreach(GameObject i in disable_objs) { i.SetActive(false); }
     }
 
-    public void EnableFood()
-    {
-        food_temple_spawner.SetActive(true);
-    }
 
     public void EndGame()
     {
         Application.Quit();
+    }
+
+    public void Reload()
+    {
+        SceneManager.LoadScene("MainLevel");
     }
 }

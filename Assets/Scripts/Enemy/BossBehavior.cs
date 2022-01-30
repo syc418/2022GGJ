@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+
 public class BossBehavior : MonoBehaviour
 {
     [SerializeField]
@@ -129,7 +130,8 @@ public class BossBehavior : MonoBehaviour
     private void OnDestroy()
     {
         //when boss is killed, go to end scene
-        Debug.Log("Win.");
+        GameObject GM = GameObject.Find("GameManager");
+        GM.GetComponent<GameManager>().WinGame();
     }
 
     public void Enrage() 
