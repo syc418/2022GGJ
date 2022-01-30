@@ -7,18 +7,39 @@ public class SkillMenu : MonoBehaviour
     // SkillObject firstSkill
     // SkillObject secondSkill
     public GameObject pauseMenuController;
+    public GameObject playerSkillController;
+
+    private List<int> skillList = new List<int> { 1, 2, 3, 4, 5, 6, 7 };
+    private GameObject firstSkill;
+    private GameObject secondSkill;
 
     public void OpenSkillMenu()
     {
-        // Pause Game
+        if(skillList.Count < 2)
+        {
+            // Only one skill left
+            return;
+        }
+
         pauseMenuController.GetComponent<PauseMenu>().PauseGame();
+        for(int i = 0; i < 2; ++i) 
+        {
+            int temp = skillList[i];
+            int random_num = Random.Range(i, skillList.Count);
+            skillList[i] = skillList[random_num];
+            skillList[random_num] = temp;
+        }
+        firstSkill = playerSkillController.transform.GetChild(skillList[0]).gameObject;
+        secondSkill = playerSkillController.transform.GetChild(skillList[1]).gameObject;
         gameObject.SetActive(true);
     }
 
     public void SelectFirstSkill()
     {
-        // firstSkill.EnableSkill();
-        Debug.Log("SelectFirstSkill");
+        firstSkill.GetComponent<Skill>().Select();
+        skillList.RemoveAt(0);
+        
+        // Debug.Log("SelectFirstSkill");
         Animator animator1 = (Animator)gameObject.transform.GetChild(1).gameObject.GetComponent(typeof(Animator));
         Animator animator2 = (Animator)gameObject.transform.GetChild(2).gameObject.GetComponent(typeof(Animator));
 
@@ -33,8 +54,9 @@ public class SkillMenu : MonoBehaviour
 
     public void SelectSecondSkill()
     {
-        // secondSkill.EnableSkill();
-        Debug.Log("SelectSecondSkill");
+        secondSkill.GetComponent<Skill>().Select();
+        skillList.RemoveAt(1);
+        // Debug.Log("SelectSecondSkill");
         Animator animator1 = (Animator)gameObject.transform.GetChild(1).gameObject.GetComponent(typeof(Animator));
         Animator animator2 = (Animator)gameObject.transform.GetChild(2).gameObject.GetComponent(typeof(Animator));
 

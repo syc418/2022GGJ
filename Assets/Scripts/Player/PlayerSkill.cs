@@ -46,7 +46,6 @@ public class PlayerSkill : MonoBehaviour
 
     void Start()
     {
-        // NianNianYouYu();
-        // HuHuShengFeng();
+
     }
 }
