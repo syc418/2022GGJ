@@ -2733,7 +2733,7 @@ PrefabInstance:
       objectReference: {fileID: 127082259}
     - target: {fileID: 1516463375636146649, guid: f686fe2b28ada39459a09b55f8afee67, type: 3}
       propertyPath: Game_Time
-      value: 30
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 1516463375636146649, guid: f686fe2b28ada39459a09b55f8afee67, type: 3}
       propertyPath: food_temple_spawner
