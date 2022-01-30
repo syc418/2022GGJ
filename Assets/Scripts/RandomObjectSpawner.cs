@@ -16,15 +16,22 @@ public class RandomObjectSpawner : MonoBehaviour
 
     private int last_index = -1;
 
+    public float start_delay;
+
     private void Awake()
     {
-        spawn_speed_timer = spawn_speed;
     }
 
     private void Update()
     {
         if (is_active) 
         {
+            if (start_delay >= 0f)
+            {
+                start_delay -= Time.deltaTime;
+                return;
+            }
+
             if (spawn_speed_timer <= 0)
             {
                 Spawn();
