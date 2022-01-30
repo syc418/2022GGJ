@@ -15,7 +15,7 @@ public class DuoChiBuPang : Skill
 
     void Start()
     {
-        name = "DuoChiBuPang.png";
+        // name = "DuoChiBuPang.png";
         text = "Small the Body Size";
     }
 }

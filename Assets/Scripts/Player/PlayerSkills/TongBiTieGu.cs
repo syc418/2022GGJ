@@ -15,7 +15,7 @@ public class TongBiTieGu : Skill
 
     void Start()
     {
-        name = "TongBiTieGu.png";
+        // name = "TongBiTieGu.png";
         text = "Defense Up";
     }
 }

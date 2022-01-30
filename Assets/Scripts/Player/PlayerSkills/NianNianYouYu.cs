@@ -15,7 +15,7 @@ public class NianNianYouYu : Skill
 
     void Start()
     {
-        name = "NianNianYouYu.png";
+        // name = "NianNianYouYu.png";
         text = "Increase Satiety Value";
     }
 }

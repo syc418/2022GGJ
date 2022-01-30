@@ -15,7 +15,7 @@ public class HuHuShengFeng : Skill
 
     void Start()
     {
-        name = "HuHuShengFeng";
+        // name = "HuHuShengFeng.png";
         text = "Speed Up";
     }
 }

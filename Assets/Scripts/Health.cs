@@ -49,7 +49,7 @@ public class Health : MonoBehaviour
         
         if (current_health >= thresholds[0] && !level1)
         {
-            //reach 50, make a choice
+            //reach 70, make a choice
             skill();
             health.maxValue = thresholds[1];
             health.GetComponent<RectTransform>().sizeDelta = new Vector2(240f, 20f);
@@ -58,7 +58,7 @@ public class Health : MonoBehaviour
 
         if(current_health >= thresholds[1] && !level2)
         {
-            //reach 75, make a choice
+            //reach 120, make a choice
             skill();
             health.maxValue = thresholds[2];
             health.GetComponent<RectTransform>().sizeDelta = new Vector2(400f, 20f);
@@ -67,9 +67,9 @@ public class Health : MonoBehaviour
 
         if (current_health >= thresholds[2] && !level3)
         {
-            //reach 125, make a choice
+            //reach 200, make a choice
             skill();
-            health.maxValue = 220;
+            // health.maxValue = 200;
             health.GetComponent<RectTransform>().sizeDelta = new Vector2(640f, 20f);
             level3 = true;
         }

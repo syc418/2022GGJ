@@ -15,7 +15,7 @@ public class DaKuaiDuoYi : Skill
 
     void Start()
     {
-        name = "DaKuaiDuoYi.png";
+        // name = "DaKuaiDuoYi.png";
         text = "Food Becomes More Delicious";
     }
 }

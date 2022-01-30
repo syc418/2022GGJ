@@ -16,7 +16,7 @@ public class ZheTianBiRi : Skill
 
     void Start()
     {
-        name = "ZheTianBiRi.png";
+        // name = "ZheTianBiRi.png";
         text = "Damage Up";
     }
 }

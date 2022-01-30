@@ -15,7 +15,7 @@ public class ShenQingRuYan : Skill
 
     void Start()
     {
-        name = "ShenQingRuYan.png";
+        // name = "ShenQingRuYan.png";
         text = "Decrease Dash Cooldown";
     }
 }
