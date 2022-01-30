@@ -31,6 +31,9 @@ public class BossBehavior : MonoBehaviour
     private Vector3 destination;
     private Rigidbody2D rb;
 
+    private bool is_enraged;
+    public List<GameObject> enrage_objs;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +43,8 @@ public class BossBehavior : MonoBehaviour
         health_slider.maxValue = obstacle_script.health_max;
 
         rb = GetComponent<Rigidbody2D>();
+
+        is_enraged = false;
     }
 
     // Update is called once per frame
@@ -98,6 +103,16 @@ public class BossBehavior : MonoBehaviour
 
         //update health
         health_slider.value = obstacle_script.health;
+
+        //check enrage
+        if (!is_enraged) 
+        {
+            if (obstacle_script.health <= (obstacle_script.health_max/2f)) 
+            {
+                animator.SetTrigger("Enrage");
+                is_enraged = true;
+            }
+        }
     }
 
     public void Raise_Attack() 
@@ -115,6 +130,16 @@ public class BossBehavior : MonoBehaviour
     {
         //when boss is killed, go to end scene
         Debug.Log("Win.");
+    }
+
+    public void Enrage() 
+    {
+        attack_rate = 12f;
+        action_rate = 3f;
+        foreach (GameObject obj in enrage_objs) 
+        {
+            obj.SetActive(true);
+        }
     }
 
 }

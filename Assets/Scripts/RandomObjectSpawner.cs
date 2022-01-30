@@ -16,6 +16,10 @@ public class RandomObjectSpawner : MonoBehaviour
 
     private int last_index = -1;
 
+    private void Awake()
+    {
+        spawn_speed_timer = spawn_speed;
+    }
 
     private void Update()
     {

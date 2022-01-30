@@ -9,13 +9,18 @@ public class ObjectSpawner : MonoBehaviour
     public float spawn_speed;
     private float spawn_speed_timer;
 
-    private Collider2D collider;
+    private Collider2D AreaCollider;
 
     public GameObject parent;
 
+    private void Awake()
+    {
+        spawn_speed_timer = spawn_speed;
+    }
+
     private void Start()
     {
-        collider = GetComponent<Collider2D>();
+        AreaCollider = GetComponent<Collider2D>();
     }
 
     private void Update()
@@ -23,9 +28,9 @@ public class ObjectSpawner : MonoBehaviour
         if (spawn_speed_timer <= 0)
         {
             //spawn obj in random position within area
-            Vector3 position = collider.bounds.center;
-            position.x += Random.Range(-1f * collider.bounds.extents.x, collider.bounds.extents.x);
-            position.y += Random.Range(-1f * collider.bounds.extents.y, collider.bounds.extents.y);
+            Vector3 position = AreaCollider.bounds.center;
+            position.x += Random.Range(-1f * AreaCollider.bounds.extents.x, AreaCollider.bounds.extents.x);
+            position.y += Random.Range(-1f * AreaCollider.bounds.extents.y, AreaCollider.bounds.extents.y);
             GameObject obj = GameObject.Instantiate(obj_prefab, position, Quaternion.identity, this.transform);
             obj.transform.SetParent(parent.transform);
             //reset timer
